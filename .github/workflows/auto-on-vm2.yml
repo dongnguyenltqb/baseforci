@@ -1,15 +1,21 @@
-name: Schedule Sandbox
+name: Auto staging vm2
 
 on:
-  schedule:
-    - cron: "*/5 * * * *"
+  push:
+    branches: ["master"]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "input your version"
+        type: string
+        required: false
 
 jobs:
   Build:
     uses: dongnguyenltqb/baseforci/.github/workflows/build.yml@master
   Deploy:
     environment: staging
-    runs-on: ubuntu-latest
+    runs-on: vm2
     needs:
       - Build
     env:

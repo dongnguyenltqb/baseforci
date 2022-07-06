@@ -11,8 +11,6 @@ on:
         required: false
 
 jobs:
-  Build:
-    uses: dongnguyenltqb/baseforci/.github/workflows/build.yml@master
   Deploy:
     environment: staging
     runs-on: vm2
@@ -27,6 +25,9 @@ jobs:
         with:
           name: build-output
           path: build
+      - name: Show Info
+        id: show
+        run: ./deploy/getme.sh
       - name: Deploy
         id: deploy
         run: ./deploy/deploy.sh

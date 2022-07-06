@@ -2,7 +2,7 @@ name: Schedule deplay test
 
 on:
   schedule:
-    - cron: "* * * * *"
+    - cron: "*/5 * * * *"
 
 jobs:
   test:

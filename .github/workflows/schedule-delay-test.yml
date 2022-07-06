@@ -1,0 +1,13 @@
+name: Schedule deplay test
+
+on:
+  schedule:
+    - cron: "* * * * *"
+
+jobs:
+  test:
+    runs-on: vm2
+    steps:
+      - name: test
+        id: deploy
+        run: echo "hello"

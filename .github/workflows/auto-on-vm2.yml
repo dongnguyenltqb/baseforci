@@ -11,6 +11,8 @@ on:
         required: false
 
 jobs:
+  Build:
+    uses: dongnguyenltqb/baseforci/.github/workflows/build.yml@master
   Deploy:
     environment: staging
     runs-on: vm2

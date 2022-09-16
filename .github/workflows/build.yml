@@ -36,7 +36,8 @@ jobs:
       - name: WhoAmI
         run: |
           #!/bin/bash
-          echo $AWS_DEFAULT_REGION
+          printenv
+          aws sts get-caller-identity
       - name: Archive artifacts
         uses: actions/upload-artifact@v3
         with:

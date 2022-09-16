@@ -7,13 +7,6 @@ on:
         description: "dev | staging | production"
         type: string
         required: true
-    # secrets:
-    #   AWS_DEFAULT_REGION:
-    #     required: true
-    #   AWS_ACCESS_KEY_ID:
-    #     required: true
-    #   AWS_SECRET_ACCESS_KEY:
-    #     required: true
 
 jobs:
   build:
@@ -43,7 +36,7 @@ jobs:
       - name: WhoAmI
         run: |
           #!/bin/bash
-          aws sts get-caller-identity
+          echo $AWS_DEFAULT_REGION
       - name: Archive artifacts
         uses: actions/upload-artifact@v3
         with:

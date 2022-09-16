@@ -8,7 +8,7 @@ on:
     
 jobs:
   whoAmI:
-    uses: dongnguyenltqb/baseforci/.github/workflows/build.yml@master
+    uses: dongnguyenltqb/baseforci/.github/workflows/whoAmI.yml@master
     if: github.ref_name == 'master'
     with:
       environment: dev
@@ -20,9 +20,6 @@ jobs:
     with:
       environment: dev
     secrets: inherit
-      # AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
-      # AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}  
-      # AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
   build_staging:
     uses: dongnguyenltqb/baseforci/.github/workflows/build.yml@master

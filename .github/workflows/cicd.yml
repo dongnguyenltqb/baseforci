@@ -1,0 +1,13 @@
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+    
+jobs:
+  build_dev:
+    uses: dongnguyenltqb/baseforci/.github/workflows/build.yml
+    if: github.ref_name == "master"
+    with:
+      environment: dev
+

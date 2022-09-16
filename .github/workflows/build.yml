@@ -2,15 +2,21 @@ name: Build
 
 on:
   workflow_call:
-  push:
-    branches:
-      - feat/*
-  pull_request:
-    branches:
-      - master
+    inputs:
+      environment:
+        description: "dev | staging | production"
+        type: string
+        required: true
+    secrets:
+      AWS_DEFAULT_REGION:
+        required: true
+      AWS_ACCESS_KEY_ID:
+        required: true
+      AWS_SECRET_ACCESS_KEY:
+        required: true
 
 jobs:
-  Build:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -21,7 +27,14 @@ jobs:
           path: node_modules
           key: ${{ runner.os }}-build-${{ hashFiles('**/package-lock.json') }}
       - name: Build
-        run: ./deploy/build.sh
+        run: |
+          #!/bin/bash
+          if [[ -d node_modules ]]; then
+            echo "=> node_modules was existed."
+          fi
+          time npm install
+          mkdir -p build
+          echo "haha" > build/result.txt
       - name: Archive artifacts
         uses: actions/upload-artifact@v3
         with:

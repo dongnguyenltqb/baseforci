@@ -4,8 +4,9 @@ on:
   push:
     branches:
       - master
+      - staging
   workflow_dispatch:
-    
+
 jobs:
   whoAmI_dev:
     uses: dongnguyenltqb/baseforci/.github/workflows/whoAmI.yml@master

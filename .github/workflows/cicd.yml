@@ -14,7 +14,7 @@ jobs:
       environment: dev
     secrets: inherit
   build_dev:
-    needs: [whoAmI]
+    needs: [whoAmI_dev]
     uses: dongnguyenltqb/baseforci/.github/workflows/build.yml@master
     if: github.ref_name == 'master'
     with:
@@ -28,6 +28,7 @@ jobs:
       environment: staging
     secrets: inherit
   build_staging:
+    needs: [whoAmI_staging]
     uses: dongnguyenltqb/baseforci/.github/workflows/build.yml@master
     if: github.ref_name == 'staging'
     with:

@@ -7,7 +7,14 @@ on:
   workflow_dispatch:
     
 jobs:
+  whoAmI:
+    uses: dongnguyenltqb/baseforci/.github/workflows/build.yml@master
+    if: github.ref_name == 'master'
+    with:
+      environment: dev
+    secrets: inherit
   build_dev:
+    needs: [whoAmI]
     uses: dongnguyenltqb/baseforci/.github/workflows/build.yml@master
     if: github.ref_name == 'master'
     with:

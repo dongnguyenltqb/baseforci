@@ -8,6 +8,13 @@ on:
   workflow_dispatch:
 
 jobs:
+  vm2:
+    environment: dev
+    runs-on: ["self-hosted","vm2"]
+    steps:
+      - name: uname
+        run: uname -a
+
   whoAmI_dev:
     uses: dongnguyenltqb/baseforci/.github/workflows/whoAmI.yml@master
     if: github.ref_name == 'master'

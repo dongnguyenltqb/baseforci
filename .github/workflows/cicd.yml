@@ -9,7 +9,7 @@ on:
 jobs:
   build_dev:
     uses: dongnguyenltqb/baseforci/.github/workflows/build.yml@master
-    if: github.ref_name == "master"
+    if: github.ref_name == 'master'
     with:
       environment: dev
 

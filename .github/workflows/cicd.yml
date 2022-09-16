@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     
 jobs:
-  whoAmI:
+  whoAmI_dev:
     uses: dongnguyenltqb/baseforci/.github/workflows/whoAmI.yml@master
     if: github.ref_name == 'master'
     with:
@@ -21,12 +21,15 @@ jobs:
       environment: dev
     secrets: inherit
 
+  whoAmI_staging:
+    uses: dongnguyenltqb/baseforci/.github/workflows/whoAmI.yml@master
+    if: github.ref_name == 'staging'
+    with:
+      environment: staging
+    secrets: inherit
   build_staging:
     uses: dongnguyenltqb/baseforci/.github/workflows/build.yml@master
     if: github.ref_name == 'staging'
     with:
       environment: staging
-    secrets:                
-      AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}  
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    secrets: inherit
